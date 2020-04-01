@@ -39,7 +39,7 @@ public class InternshipTask {
     /**
      * Method
      *
-     * @param in input file
+     * @param in input reader
      * @return maximum profit from unloading trains
      */
 
@@ -51,6 +51,12 @@ public class InternshipTask {
         return maximizeValue();
     }
 
+    /**
+     * Method
+     *
+     * @param in input reader
+     */
+
     private void readInput(InputReader in) {
         n = in.nextInt();
         g.resize(n + 2);
@@ -60,6 +66,9 @@ public class InternshipTask {
         }
     }
 
+    /**
+     *
+     */
 
     private void addEdges() {
         for (int i = 0; i < n; i++) {
@@ -78,6 +87,12 @@ public class InternshipTask {
         }
     }
 
+    /**
+     *
+     * @param first
+     * @param second
+     * @return
+     */
 
     private boolean canUnload(Train first, Train second) {
         int timeFirst = Integer.parseInt(first.getArrivalTime().substring(0, 2)) * 60 +
@@ -93,6 +108,10 @@ public class InternshipTask {
     }
 
 
+    /**
+     *
+     */
+
     private void initDynamicProgramming() {
         d = new int[n + 2];
         d[n] = 0;
@@ -104,6 +123,12 @@ public class InternshipTask {
 
     }
 
+
+    /**
+     *
+     * @return
+     */
+
     private int maximizeValue() {
         initDynamicProgramming();
 
@@ -114,6 +139,12 @@ public class InternshipTask {
         return d[n];
 
     }
+
+    /**
+     *
+     * @param v
+     * @return
+     */
 
     private int findMaxValue(int v) {
         int maxValue = 0;
@@ -128,6 +159,9 @@ public class InternshipTask {
         return maxValue;
     }
 
+    /**
+     *
+     */
 
     private void topologicalSort() {
         used = new boolean[n + 2];
@@ -139,6 +173,11 @@ public class InternshipTask {
             }
         }
     }
+
+    /**
+     *
+     * @param v
+     */
 
     private void dfs(int v) {
         used[v] = true;

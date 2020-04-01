@@ -5,7 +5,7 @@ import org.junit.internal.TextListener;
 import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;
 import test.simpleTests.SimpleTest;
-import test.trickyTests.TrickyTest;
+import test.middleTests.MiddleTest;
 
 public class InternshipTaskTest {
     @Test
@@ -15,7 +15,7 @@ public class InternshipTaskTest {
 
 
         resultReport(junit.run(SimpleTest.class), "Simple tests");
-        resultReport(junit.run(TrickyTest.class), "Tricky tests");
+        resultReport(junit.run(MiddleTest.class), "Middle tests");
 
 
     }
