@@ -1,7 +1,7 @@
 package test.trickyTests;
 
 import main.InternshipTask;
-import main.reader.InputReader;
+import main.models.InputReader;
 import org.junit.Assert;
 import org.junit.Test;
 

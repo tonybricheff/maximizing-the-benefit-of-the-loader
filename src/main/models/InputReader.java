@@ -1,4 +1,4 @@
-package main.reader;
+package main.models;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -7,8 +7,8 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 public class InputReader {
-    public BufferedReader reader;
-    public StringTokenizer tokenizer;
+    private BufferedReader reader;
+    private StringTokenizer tokenizer;
 
     public InputReader(InputStream stream) {
         reader = new BufferedReader(new InputStreamReader(stream), 32768);
@@ -28,10 +28,6 @@ public class InputReader {
 
     public int nextInt() {
         return Integer.parseInt(next());
-    }
-
-    public Long nextLong() {
-        return Long.parseLong(next());
     }
 
 }

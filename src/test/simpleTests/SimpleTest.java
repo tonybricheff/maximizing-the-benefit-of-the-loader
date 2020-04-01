@@ -1,11 +1,10 @@
 package test.simpleTests;
 
 import main.InternshipTask;
-import main.reader.InputReader;
+import main.models.InputReader;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.io.Console;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;

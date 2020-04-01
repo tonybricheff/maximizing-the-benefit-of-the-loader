@@ -1,6 +1,6 @@
 package main;
 
-import main.reader.InputReader;
+import main.models.InputReader;
 import java.io.*;
 
 public class Main {
