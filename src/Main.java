@@ -21,7 +21,7 @@ public class Main {
 
     static class TaskInternship {
 
-        class GraphMatrix {
+        static class GraphMatrix {
             private int[][] matrix;
             int numVertices;
 
@@ -51,7 +51,7 @@ public class Main {
         }
 
 
-        class GraphList {
+        static class GraphList {
             private int numVertices;
             private LinkedList<Pair> adjLists[];
 
@@ -86,11 +86,12 @@ public class Main {
 
         }
 
-        private class Train {
+        private static class Train {
             int number;
             String arrivalTime;
             String timeToUnload;
             int value;
+
 
             Train(int number, String arrivalTime, String timeToUnload, int value) {
                 this.number = number;
@@ -100,7 +101,7 @@ public class Main {
             }
         }
 
-        private class Pair {
+        private static class Pair {
             int vertexNumber;
             int trainNumber;
             int trainValue;
@@ -114,7 +115,7 @@ public class Main {
 
 
         private List<Train> trains = new ArrayList<>();
-        private List<Integer> unloadedTrains = new ArrayList<>();
+        private Set<Integer> unloadedTrains = new HashSet<>();
         private Integer n;
         private GraphList g = new GraphList();
         private boolean[] used;
@@ -150,7 +151,7 @@ public class Main {
             for (int u : topSort)
                 System.out.print(u + 1 + " ");
             System.out.println();
-            //System.out.println(maximizeValue());
+            System.out.println(maximizeValue());
 
 
         }
@@ -167,37 +168,56 @@ public class Main {
         }
 
 
-        /*
-        private int maximizeValue() {
+        private void initDynamicProgramming(){
             d = new int[n + 2];
-            Arrays.fill(d, 0);
+            d[n] = 0;
+            d[n + 1] = 0;
+
+            for(int i = 0;i < trains.size();i++)
+                d[i] = trains.get(i).value;
+
+            for(int i : d)
+                System.out.print(i + " ");
+            System.out.println();
+
+        }
+
+        private int maximizeValue() {
+            initDynamicProgramming();
             int value = 0;
             for (int train : topSort) {
-                value += findMaxValue(train);
+                d[train] +=  findMaxValue(train);
             }
+            for(int i : d)
+                System.out.print(i + " ");
+            System.out.println();
+
             System.out.println(unloadedTrains);
-            return value;
+            return d[n];
 
 
         }
-        /*
 
         private int findMaxValue(int v) {
+            int maxValue = 0;
+            int trainNumber = -1;
+
             for (int i = 0; i < g.adjLists[v].size(); i++) {
                 Pair currentTrain = g.adjLists[v].get(i);
-                if(Math.max(d[v], currentTrain.trainValue) !=d[v]){
-                    d[v] = currentTrain.trainValue;
-                    unloadedTrains.add(currentTrain.trainNumber);
+                if(Math.max(maxValue, d[currentTrain.vertexNumber]) != maxValue){
+                    maxValue = d[currentTrain.vertexNumber];
+                    trainNumber = currentTrain.trainNumber;
                 }
             }
+            if(trainNumber != -1)
+                unloadedTrains.add(trainNumber);
             if(unloadedTrains.size() != 0)
-            System.out.println(unloadedTrains.get(unloadedTrains.size() - 1) + " " + maxValue);
+            System.out.println(trainNumber + " " + maxValue);
 
 
             return maxValue;
         }
 
-         */
 
         private void topologicalSort() {
             used = new boolean[n + 2];
