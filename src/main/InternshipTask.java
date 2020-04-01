@@ -5,13 +5,43 @@ import java.util.*;
 
 public class InternshipTask {
 
+    /**
+     * number of trains
+     */
     private Integer n;
+
+    /**
+     * oriented graph
+     */
     private Graph g = new Graph();
-    private List<Train> trains = new ArrayList<>();
+
+    /**
+     * array of vertex states during dfs
+     */
     private boolean[] used;
-    private List<Integer> topSort = new ArrayList<>();
+
+    /**
+     * dynamic programming array
+     */
     private int[] d;
 
+    /**
+     * list with information about trains
+     */
+    private List<Train> trains = new ArrayList<>();
+
+    /**
+     * list with result of topological sorting
+     */
+    private List<Integer> topSort = new ArrayList<>();
+
+
+    /**
+     * Method
+     *
+     * @param in input file
+     * @return maximum profit from unloading trains
+     */
 
     public int getSolution(InputReader in) {
         readInput(in);
