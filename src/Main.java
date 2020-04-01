@@ -1,9 +1,5 @@
 import java.io.*;
-import java.lang.reflect.Parameter;
-import java.nio.file.Path;
 import java.util.*;
-import java.util.spi.AbstractResourceBundleProvider;
-import java.util.stream.Collector;
 
 
 public class Main {
@@ -113,6 +109,13 @@ public class Main {
             }
         }
 
+        public static class TimeComparator implements Comparator<Train>{
+            @Override
+            public int compare(Train o, Train t1) {
+                return (Integer.parseInt(o.arrivalTime.substring(0, 2)) * 60 + Integer.parseInt(o.arrivalTime.substring(3))) -  (Integer.parseInt(t1.arrivalTime.substring(0, 2)) * 60 + Integer.parseInt(t1.arrivalTime.substring(3)));
+            }
+        }
+
 
         private List<Train> trains = new ArrayList<>();
         private Set<Integer> unloadedTrains = new HashSet<>();
@@ -133,6 +136,7 @@ public class Main {
                 trains.add(new Train(in.nextInt(), in.next(), in.next(), in.nextInt()));
             }
 
+            trains.sort(new TimeComparator());
 
             for (int i = 0; i < n; i++) {
                 for (int j = i + 1; j < n; j++) {
@@ -184,7 +188,7 @@ public class Main {
 
         private int maximizeValue() {
             initDynamicProgramming();
-            int value = 0;
+
             for (int train : topSort) {
                 d[train] +=  findMaxValue(train);
             }
