@@ -1,8 +1,11 @@
 package main;
 
+import main.reader.InputReader;
+
+import java.io.PrintWriter;
 import java.util.*;
 
-class InternshipTask {
+public class InternshipTask {
 
     private static class GraphList {
         private int numVertices;
@@ -12,14 +15,14 @@ class InternshipTask {
             numVertices = 0;
         }
 
-        public void resize(int n) {
+        void resize(int n) {
             this.numVertices = n;
             adjLists = new LinkedList[n];
             for (int i = 0; i < numVertices; i++)
                 adjLists[i] = new LinkedList();
         }
 
-        public void addEdge(Pair from, Pair to) {
+        void addEdge(Pair from, Pair to) {
             adjLists[from.vertexNumber].add(to);
         }
 
@@ -73,7 +76,6 @@ class InternshipTask {
 
 
     private List<Train> trains = new ArrayList<>();
-    private Set<Integer> unloadedTrains = new HashSet<>();
     private Integer n;
     private GraphList g = new GraphList();
     private boolean[] used;
@@ -81,21 +83,20 @@ class InternshipTask {
     private int[] d;
 
 
-    public void solve() {
-        readInput();
+    public int getSolution(InputReader in) {
+        readInput(in);
         trains.sort(new TimeComparator());
         addEdges();
         topologicalSort();
-        System.out.println(maximizeValue());
+        return maximizeValue();
     }
 
-    private void readInput(){
-        Scanner scanner = new Scanner(System.in);
-        n = scanner.nextInt();
+    private void readInput(InputReader in){
+        n = in.nextInt();
         g.resize(n + 2);
 
         for (int i = 0; i < n; i++) {
-            trains.add(new Train(scanner.nextInt(), scanner.next(), scanner.next(), scanner.nextInt()));
+            trains.add(new Train(in.nextInt(), in.next(), in.next(), in.nextInt()));
         }
     }
 

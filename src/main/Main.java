@@ -1,10 +1,15 @@
 package main;
 
-import main.InternshipTask;
+import main.reader.InputReader;
+import java.io.*;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
         InternshipTask solution = new InternshipTask();
-        solution.solve();
+
+        InputStream inputStream = new FileInputStream("loader.in");
+        InputReader input = new InputReader(inputStream);
+
+        System.out.println(solution.getSolution(input));
     }
 }
