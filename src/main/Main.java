@@ -10,6 +10,6 @@ public class Main {
         InputStream inputStream = new FileInputStream("loader.in");
         InputReader input = new InputReader(inputStream);
 
-        System.out.println(solution.getSolution(input));
+        System.out.println("Max value = " + solution.getSolution(input));
     }
 }
