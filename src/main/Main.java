@@ -7,7 +7,7 @@ public class Main {
     public static void main(String[] args) throws FileNotFoundException {
         InternshipTask solution = new InternshipTask();
 
-        InputStream inputStream = new FileInputStream("loader.in");
+        InputStream inputStream = new FileInputStream("input.in");
         InputReader input = new InputReader(inputStream);
 
         System.out.println("Max value = " + solution.getSolution(input));

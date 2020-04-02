@@ -2,6 +2,10 @@ package main.models;
 
 import java.util.Comparator;
 
+/*
+    class to represent comparator for sorting by time
+ */
+
 public class TimeComparator implements Comparator<Train> {
     @Override
     public int compare(Train first, Train second) {

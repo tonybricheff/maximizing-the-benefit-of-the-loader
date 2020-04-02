@@ -1,11 +1,15 @@
 package main.models;
 
-public class Pair {
+/*
+    class to represent a graph vertex
+ */
+
+public class Vertex {
     private int vertexNumber;
     private int trainNumber;
     private int trainValue;
 
-    public Pair(int vertexNumber, int trainValue, int trainNumber) {
+    public Vertex(int vertexNumber, int trainValue, int trainNumber) {
         this.vertexNumber = vertexNumber;
         this.trainValue = trainValue;
         this.trainNumber = trainNumber;

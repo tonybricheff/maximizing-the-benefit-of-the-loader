@@ -1,11 +1,15 @@
 package main.models;
 
-import java.nio.file.Path;
 import java.util.LinkedList;
+
+
+/*
+    class to represent an oriented graph, using adjacency list
+ */
 
 public class Graph {
     private int numVertices;
-    private LinkedList<Pair>[] adjLists;
+    private LinkedList<Vertex>[] adjLists;
 
     public Graph() {
         numVertices = 0;
@@ -15,10 +19,10 @@ public class Graph {
         this.numVertices = n;
         adjLists = new LinkedList[n];
         for (int i = 0; i < numVertices; i++)
-            adjLists[i] = new LinkedList();
+            adjLists[i] = new LinkedList<>();
     }
 
-    public void addEdge(Pair from, Pair to) {
+    public void addEdge(Vertex from, Vertex to) {
         adjLists[from.getVertexNumber()].add(to);
     }
 
@@ -36,7 +40,7 @@ public class Graph {
         return adjLists[v].size();
     }
 
-    public Pair get(int from, int to){
+    public Vertex get(int from, int to){
         return adjLists[from].get(to);
     }
 

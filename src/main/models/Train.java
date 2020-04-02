@@ -1,5 +1,9 @@
 package main.models;
 
+/*
+    class to represent train
+ */
+
 public class Train {
     private int number;
     private String arrivalTime;
