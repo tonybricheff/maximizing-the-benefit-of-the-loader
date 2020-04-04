@@ -59,7 +59,7 @@ public class InternshipTask {
 
 
     /*
-        Adding an oriented edges between vertices if we can unload trains and connecting each vertex to source and sink
+        Adding an oriented edges between vertices if we can unload trains, and connecting each vertex to source and sink
      */
 
     private void addEdges() {
